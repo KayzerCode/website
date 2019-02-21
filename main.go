@@ -21,6 +21,8 @@ func main() {
 
 func hom(w http.ResponseWriter, r *http.Request) {
 	tpl.ExecuteTemplate(w, "default.gohtml", nil)
+
+	//TODO check if template file exists
 }
 
 func nods(w http.ResponseWriter, r *http.Request) {
