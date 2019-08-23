@@ -15,12 +15,13 @@ func main() {
 	http.HandleFunc("/", hom)
 	http.HandleFunc("/about", abou)
 	http.HandleFunc("/nodes", nods)
+	http.HandleFunc("/settings", settngs)
 	http.Handle("/stuff/", http.StripPrefix("/stuff", http.FileServer(http.Dir("assets"))))
 	http.ListenAndServe(":8080", nil)
 }
 
 func hom(w http.ResponseWriter, r *http.Request) {
-	tpl.ExecuteTemplate(w, "default.gohtml", nil)
+	tpl.ExecuteTemplate(w, "home.gohtml", nil)
 
 	//TODO check if template file exists
 }
@@ -31,4 +32,8 @@ func nods(w http.ResponseWriter, r *http.Request) {
 
 func abou(w http.ResponseWriter, r *http.Request) {
 	tpl.ExecuteTemplate(w, "about.gohtml", nil)
+}
+
+func settngs(w http.ResponseWriter, r *http.Request) {
+	tpl.ExecuteTemplate(w, "settings.gohtml", nil)
 }
